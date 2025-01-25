@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent (typeof(BoxCollider2D))]
@@ -6,9 +7,12 @@ public class MainChar : MonoBehaviour
 {
     [Header("Player Index")]
     public int playerIndex = 1;
+    [Header("Score")]
+    public TextMeshProUGUI scoreText;
+    private int points = 0;
+
 
     private BoxCollider2D boxCollider;
-    private int points = 0;
     private bool canEarnPoints = true;
 
     void Awake()
@@ -20,27 +24,21 @@ public class MainChar : MonoBehaviour
     {
         if(collision.transform.root.tag.Equals("Car"))
         {
-            Debug.Log("Colisión detectada con objeto");
-            StartCoroutine("Invencibility");
+            StartCoroutine(Invencibility(collision.transform.root.gameObject.GetComponent<CarObstacle>()));
         }
     }
 
     public void AddPoint()
     {
-        if (canEarnPoints)
-        {
-            points++;
-        }
+        points++;
+        scoreText.SetText("" + points * 10);
     }
 
-    IEnumerator Invencibility()
+    IEnumerator Invencibility(CarObstacle car)
     {
-        canEarnPoints = false;
-        RoadFightersManager.instance.Crash(playerIndex);
+        RoadFightersManager.instance.Crash(playerIndex, car);
 
         yield return new WaitForSeconds(2);
-
-        canEarnPoints=true;
     }
 
 
