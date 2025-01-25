@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainChar : MonoBehaviour
 {
     [Header("Player Index")]
-    public int playerIndex { get; private set; } = 1;
+    public int playerIndex = 1;
 
     private BoxCollider2D boxCollider;
     private int points = 0;
@@ -20,6 +20,7 @@ public class MainChar : MonoBehaviour
     {
         if(collision.transform.root.tag.Equals("Car"))
         {
+            Debug.Log("Colisión detectada con objeto");
             StartCoroutine("Invencibility");
         }
     }
