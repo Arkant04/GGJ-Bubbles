@@ -13,6 +13,7 @@ TagManager:
   - Red
   - bullet1
   - bullet2
+  - Car
   layers:
   - Default
   - TransparentFX
