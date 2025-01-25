@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Ground
   - Obstacle
+  - Bullet
+  - Player1
+  - Player2
+  - Blue
+  - Red
+  - bullet1
+  - bullet2
   layers:
   - Default
   - TransparentFX
