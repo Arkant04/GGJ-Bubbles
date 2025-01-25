@@ -10,6 +10,10 @@ public class MainChar : MonoBehaviour
     [Header("Score")]
     public TextMeshProUGUI scoreText;
     private int points = 0;
+    [Header("Inputs")]
+    public KeyCode leftMove;
+    public KeyCode rightMove;
+    public float speed = 250;
 
 
     private BoxCollider2D boxCollider;
@@ -25,6 +29,19 @@ public class MainChar : MonoBehaviour
         if(collision.transform.root.tag.Equals("Car"))
         {
             StartCoroutine(Invencibility(collision.transform.root.gameObject.GetComponent<CarObstacle>()));
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if (Input.GetKey(leftMove))
+        {
+            transform.Translate(Vector3.left * (speed * Time.deltaTime));
+        }
+
+        if (Input.GetKey(rightMove))
+        {
+            transform.Translate(Vector3.right * (speed * Time.deltaTime));
         }
     }
 

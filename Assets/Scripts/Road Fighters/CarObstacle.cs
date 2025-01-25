@@ -23,11 +23,6 @@ public class CarObstacle : MonoBehaviour
         }
     }
 
-    public void FixedUpdate()
-    {
-        if(Input.GetButtonDown(""))
-    }
-
     public void EnableCar(Vector3 location, float speed)
     {
         transform.position = location;

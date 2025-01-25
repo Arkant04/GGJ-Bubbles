@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -13,15 +14,17 @@ public class RoadFightersManager : MonoBehaviour
     public float speedP1 = 1;
     public float speedP2 = 1;
     public float incrementSpeed = 0.1f;
-    public float spawnInterval = 5f;
+    public float spawnInterval = 2f;
+    public int gameDuration = 120;
 
     [Header("Obstacles")]
-    public float carSpeedP1 = 0.25f;
-    public float carSpeedP2 = 0.25f;
+    public float carSpeedP1 = 0.5f;
+    public float carSpeedP2 = 0.5f;
     public float carSpeedIncrement = 0.1f;
 
     [Header("Backgrounds")]
     public Sprite[] Fondos;
+    public TextMeshProUGUI time;
 
     [Header("Item pool")]
     public List<CarObstacle> pool;
@@ -52,7 +55,9 @@ public class RoadFightersManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnCar());
+        StartCoroutine(GameTime());
+        StartCoroutine(SpawnCarP1());
+        StartCoroutine(SpawnCarP2());
     }
 
     public void UpSpeed(int index)
@@ -115,16 +120,16 @@ public class RoadFightersManager : MonoBehaviour
         {
             case 1:
                 speedP1 = 1;
-                carSpeedP1 = 0.25f;
+                carSpeedP1 = 0.5f;
                 break;
             case 2:
                 speedP2 = 1;
-                carSpeedP2 = 0.25f;
+                carSpeedP2 = 0.5f;
                 break;
         }
     }
 
-    private IEnumerator SpawnCar()
+    private IEnumerator SpawnCarP1()
     {
         if (isPlaying)
         {
@@ -137,9 +142,19 @@ public class RoadFightersManager : MonoBehaviour
                 pool.Remove(car1);
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(spawnInterval - speedP1);
+            yield return new WaitForSeconds(0.25f);
 
-            if(speedP2 > 0)
+            StartCoroutine(SpawnCarP1());
+        }
+
+    }
+
+    private IEnumerator SpawnCarP2()
+    {
+        if (isPlaying)
+        {
+            if (speedP2 > 0)
             {
                 Transform spawn2 = carSpawnPointsP2[Random.Range(0, carSpawnPointsP2.Length)];
                 CarObstacle car2 = pool[0];
@@ -148,11 +163,11 @@ public class RoadFightersManager : MonoBehaviour
                 pool.Remove(car2);
             }
 
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(spawnInterval - speedP2);
+            yield return new WaitForSeconds(0.25f);
 
-            StartCoroutine(SpawnCar());
+            StartCoroutine(SpawnCarP2());
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -162,5 +177,18 @@ public class RoadFightersManager : MonoBehaviour
             collision.GetComponent<CarObstacle>().DisableCar(poolLocation.position);
             pool.Add(collision.GetComponent<CarObstacle>());
         }
+    }
+
+    IEnumerator GameTime()
+    {
+        while(gameDuration > 0)
+        {
+            gameDuration--;
+            time.SetText("" + gameDuration);
+            yield return new WaitForSeconds(1);
+        }
+
+        //Código de victoria
+        isPlaying = false;
     }
 }
