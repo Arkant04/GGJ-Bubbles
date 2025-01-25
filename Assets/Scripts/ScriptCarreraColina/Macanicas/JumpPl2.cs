@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpPl2 : MonoBehaviour
 {
-    [SerializeField] GameObject obstacle;
+    [SerializeField] List<GameObject> obstacles;
     Rigidbody2D rb;
     bool isGrounded = true;
 
@@ -15,7 +15,7 @@ public class JumpPl2 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isGrounded && Input.GetKeyDown(KeyCode.RightControl))
+        if (isGrounded && Input.GetKey(KeyCode.RightControl))
         {
             rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
             isGrounded = false;
@@ -31,7 +31,7 @@ public class JumpPl2 : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            obstacle.SetActive(false);
+            collision.gameObject.SetActive(false);
             rb.velocity = Vector2.zero;
         }
     }
