@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Mov2 : MonoBehaviour
 {
@@ -17,22 +18,22 @@ public class Mov2 : MonoBehaviour
 
         if (controlsInverted)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 position.x += speed * Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 position.x -= speed * Time.deltaTime;
             }
         }
         else
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 position.x -= speed * Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 position.x += speed * Time.deltaTime;
             }
@@ -44,6 +45,17 @@ public class Mov2 : MonoBehaviour
 
     public void InvertControls()
     {
-        controlsInverted = !controlsInverted;
+        StartCoroutine(InvertControlsCoroutine());
+    }
+
+    IEnumerator InvertControlsCoroutine()
+    {
+        controlsInverted = true;
+        yield return new WaitForSeconds(2f);
+        controlsInverted = false;
+    }
+    public void ResetControls()
+    {
+        controlsInverted = false;
     }
 }

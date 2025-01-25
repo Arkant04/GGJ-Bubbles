@@ -31,12 +31,28 @@ public class BulletMov : MonoBehaviour
         if (collision.CompareTag("Player1"))
         {
             Debug.Log("Bullet hit Player1");
-            collision.GetComponent<Mov>().InvertControls();
+            Mov player1Mov = collision.GetComponent<Mov>();
+            player1Mov.InvertControls();
+            StartCoroutine(ResetControlsAfterDelay(player1Mov, 1.5f));
         }
         else if (collision.CompareTag("Player2"))
         {
             Debug.Log("Bullet hit Player2");
-            collision.GetComponent<Mov2>().InvertControls();
+            Mov2 player2Mov = collision.GetComponent<Mov2>();
+            player2Mov.InvertControls();
+            StartCoroutine(ResetControlsAfterDelay(player2Mov, 1.5f));
         }
+    }
+
+    IEnumerator ResetControlsAfterDelay(Mov player1Mov, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        player1Mov.ResetControls();
+    }
+
+    IEnumerator ResetControlsAfterDelay(Mov2 player2Mov, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        player2Mov.ResetControls();
     }
 }

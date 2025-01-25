@@ -28,4 +28,16 @@ public class BubbleBricks : MonoBehaviour
             direction = Vector3.right;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (gameObject.CompareTag("bullet1") && collision.CompareTag("Blue"))
+        {
+            Destroy(gameObject);
+        }
+        else if (gameObject.CompareTag("bullet2") && collision.CompareTag("Red"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

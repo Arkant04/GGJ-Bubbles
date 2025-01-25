@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Mov : MonoBehaviour
@@ -44,6 +45,17 @@ public class Mov : MonoBehaviour
 
     public void InvertControls()
     {
-        controlsInverted = !controlsInverted;
+        StartCoroutine(InvertControlsCoroutine());
+    }
+
+    IEnumerator InvertControlsCoroutine()
+    {
+        controlsInverted = true;
+        yield return new WaitForSeconds(2f);
+        controlsInverted = false;
+    }
+    public void ResetControls()
+    {
+        controlsInverted = false;
     }
 }

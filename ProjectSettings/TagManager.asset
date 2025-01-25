@@ -9,6 +9,8 @@ TagManager:
   - Player2
   - Blue
   - Red
+  - bullet1
+  - bullet2
   layers:
   - Default
   - TransparentFX
