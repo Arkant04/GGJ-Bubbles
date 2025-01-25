@@ -1,10 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof(BoxCollider2D))]
 public class MainChar : MonoBehaviour
 {
+    [Header("Player Index")]
+    public int playerIndex { get; private set; } = 1;
+
     private BoxCollider2D boxCollider;
     private int points = 0;
     private bool canEarnPoints = true;
@@ -14,44 +16,40 @@ public class MainChar : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void FixedUpdate()
-    {
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        boxCollider.enabled = false;
-        //Invencibilidad
-        canEarnPoints = false;
-
+        if(collision.transform.root.tag.Equals("Car"))
+        {
+            StartCoroutine("Invencibility");
+        }
     }
 
     public void AddPoint()
     {
-        points++;
+        if (canEarnPoints)
+        {
+            points++;
+        }
+    }
+
+    IEnumerator Invencibility()
+    {
+        canEarnPoints = false;
+        RoadFightersManager.instance.Crash(playerIndex);
+
+        yield return new WaitForSeconds(2);
+
+        canEarnPoints=true;
     }
 
 
     #region Getters and Setters
-    public int Getpoints()
+    public int GetPoints()
     {
         return points;
     }
 
-    private void Setpoints(int value)
+    private void SetPoints(int value)
     {
         points = value;
     }
