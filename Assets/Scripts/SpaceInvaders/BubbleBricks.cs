@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BubbleBricks : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float limite;
+    [SerializeField] TMPro.TextMeshProUGUI scorePl1;
+    int scorePl1Bb;
+    int scorePl2Bb;
 
     private ParticleSystem particle;
     private Vector3 direction = Vector3.right;
@@ -34,10 +38,13 @@ public class BubbleBricks : MonoBehaviour
         if (gameObject.CompareTag("bullet1") && collision.CompareTag("Blue"))
         {
             Destroy(gameObject);
+            scorePl1Bb += 1;
+
         }
         else if (gameObject.CompareTag("bullet2") && collision.CompareTag("Red"))
         {
             Destroy(gameObject);
+            scorePl2Bb += 1;
         }
     }
 }
