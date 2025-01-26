@@ -63,7 +63,7 @@ public class ScoreManager : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("SpaceInvader");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void ResetScores()

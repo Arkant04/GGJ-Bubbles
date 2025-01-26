@@ -188,12 +188,10 @@ public class RoadFightersManager : MonoBehaviour
             time.SetText("" + gameDuration);
             yield return new WaitForSeconds(1);
         }
-        //
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         int scoreP1 = players[0].GetComponent<MainChar>().GetPoints();
         int scoreP2 = players[1].GetComponent<MainChar>().GetPoints();
-        //
 
         isPlaying = false;
 
@@ -211,6 +209,6 @@ public class RoadFightersManager : MonoBehaviour
             PlayerPrefs.SetInt("PuntosP2", PlayerPrefs.GetInt("PuntosP2") + 1);
         }
 
-        SceneManager.LoadScene("Final");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
