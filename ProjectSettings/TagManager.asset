@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Obstacle
+  - Bullet
+  - Player1
+  - Player2
+  - Blue
+  - Red
+  - bullet1
+  - bullet2
+  - Car
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -11,8 +22,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player1
+  - Player2
   - 
   - 
   - 
