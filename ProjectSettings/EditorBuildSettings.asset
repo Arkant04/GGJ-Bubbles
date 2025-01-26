@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/BubbleMinigame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/SpaceInvader.unity
+    guid: 6956f83746bb8874e8bbb47dd820133a
+  - enabled: 1
+    path: Assets/Scenes/RoadFighters.unity
+    guid: 8310635bbab5f024fb2854413eda2e03
+  - enabled: 1
     path: Assets/Scenes/CarreraColina.unity
     guid: d8e24430c5c4f7241ac7c5dcd6fd7872
   m_configObjects: {}
