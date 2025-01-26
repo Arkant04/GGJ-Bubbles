@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c8200216cfb8d6948bc4c0562b777590
+guid: b2506f4f30d1f2847b9a73b7212eb3d0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8760415695417529742
-    second: pixil-frame-0 (14)(1)_0
+      213: -5436873837951011827
+    second: Proyecto nuevo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixil-frame-0 (14)(1)_0
+      name: Proyecto nuevo_0
       rect:
         serializedVersion: 2
-        x: 75
-        y: 4
-        width: 50
-        height: 181
+        x: 0
+        y: 0
+        width: 630
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e855e1a09af339970800000000000000
-      internalID: 8760415695417529742
+      spriteID: d04b058dc085c84b0800000000000000
+      internalID: -5436873837951011827
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      pixil-frame-0 (14)(1)_0: 8760415695417529742
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
