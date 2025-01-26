@@ -9,7 +9,7 @@ public class FinalSceneManager : MonoBehaviour
     void Start()
     {
         // Leer las puntuaciones de PlayerPrefs
-        int scorePl1Bb = PlayerPrefs.GetInt("PuntosP1", 0);
+        int scorePl1Bb = PlayerPrefs.GetInt("PuntosP1");
         int scorePl2Bb = PlayerPrefs.GetInt("PuntosP2", 0);
 
         // Determinar el ganador
