@@ -80,13 +80,13 @@ public class BubbleBricks : MonoBehaviour
 
         if (gameObject.CompareTag("bullet1") && collision.CompareTag("Blue"))
         {
-            bricksHittedPl1 += 1;
+            bricksHittedPl1 ++;
             print("bricksHittedPl1: " + bricksHittedPl1);
             StartCoroutine(DeactivateAfterDelay());
         }
         else if (gameObject.CompareTag("bullet2") && collision.CompareTag("Red"))
         {
-            BricksHittedPl2 += 1;
+            BricksHittedPl2 ++;
             print("BricksHittedPl2: " + BricksHittedPl2);
             StartCoroutine(DeactivateAfterDelay());
         }
