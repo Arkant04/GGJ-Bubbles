@@ -4338,7 +4338,7 @@ MonoBehaviour:
   speedP2: 1
   incrementSpeed: 0.1
   spawnInterval: 3
-  gameDuration: 120
+  gameDuration: 30
   carSpeedP1: 0.5
   carSpeedP2: 0.5
   carSpeedIncrement: 0.25
