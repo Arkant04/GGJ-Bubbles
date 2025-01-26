@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        // Resetear las puntuaciones en PlayerPrefs al iniciar el juego
+        ResetScores();
+
         // Inicializar las puntuaciones desde PlayerPrefs
         scorePl1Bb = PlayerPrefs.GetInt("PuntosP1", 0);
         scorePl2Bb = PlayerPrefs.GetInt("PuntosP2", 0);
@@ -44,6 +48,7 @@ public class ScoreManager : MonoBehaviour
             scoreTextPlBb1.text = scorePl1Bb.ToString();
             PlayerPrefs.SetInt("PuntosP1", scorePl1Bb);
             hasAnyPlayerWon = true;
+            ChangeScene();
         }
 
         if (pl2Bb.localScale.magnitude <= 0)
@@ -52,6 +57,19 @@ public class ScoreManager : MonoBehaviour
             scoreTextPlBb2.text = scorePl2Bb.ToString();
             PlayerPrefs.SetInt("PuntosP2", scorePl2Bb);
             hasAnyPlayerWon = true;
+            ChangeScene();
         }
+    }
+
+    void ChangeScene()
+    {
+        SceneManager.LoadScene("SpaceInvader");
+    }
+
+    void ResetScores()
+    {
+        PlayerPrefs.SetInt("PuntosP1", 0);
+        PlayerPrefs.SetInt("PuntosP2", 0);
+        PlayerPrefs.Save();
     }
 }
