@@ -16,7 +16,7 @@ public class RoadFightersManager : MonoBehaviour
     public float speedP2 = 1;
     public float incrementSpeed = 0.1f;
     public float spawnInterval = 2f;
-    public int gameDuration = 120;
+    public int gameDuration = 60;
 
     [Header("Obstacles")]
     public float carSpeedP1 = 0.5f;
@@ -211,6 +211,6 @@ public class RoadFightersManager : MonoBehaviour
             PlayerPrefs.SetInt("PuntosP2", PlayerPrefs.GetInt("PuntosP2") + 1);
         }
 
-        //SceneManager.LoadScene("LevelToLoad");
+        SceneManager.LoadScene("Final");
     }
 }
