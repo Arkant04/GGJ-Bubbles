@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Progress;
 
 public class RoadFightersManager : MonoBehaviour
@@ -187,8 +188,29 @@ public class RoadFightersManager : MonoBehaviour
             time.SetText("" + gameDuration);
             yield return new WaitForSeconds(1);
         }
+        //
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        //Código de victoria
+        int scoreP1 = players[0].GetComponent<MainChar>().GetPoints();
+        int scoreP2 = players[1].GetComponent<MainChar>().GetPoints();
+        //
+
         isPlaying = false;
+
+        if (scoreP1 > scoreP2)
+        {
+            PlayerPrefs.SetInt("PuntosP1", PlayerPrefs.GetInt("PuntosP1") + 1);
+        }
+        else if (scoreP1 < scoreP2)
+        {
+            PlayerPrefs.SetInt("PuntosP2", PlayerPrefs.GetInt("PuntosP2") + 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("PuntosP1", PlayerPrefs.GetInt("PuntosP1") + 1);
+            PlayerPrefs.SetInt("PuntosP2", PlayerPrefs.GetInt("PuntosP2") + 1);
+        }
+
+        //SceneManager.LoadScene("LevelToLoad");
     }
 }
