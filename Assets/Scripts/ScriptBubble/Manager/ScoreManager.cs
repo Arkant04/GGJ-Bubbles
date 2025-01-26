@@ -20,24 +20,29 @@ public class ScoreManager : MonoBehaviour
     int scorePl1Bb;
     int scorePl2Bb;
 
-
     bool hasAnyPlayerWon = false;
+
     void Start()
     {
-        
+        // Inicializar las puntuaciones desde PlayerPrefs
+        scorePl1Bb = PlayerPrefs.GetInt("PuntosP1", 0);
+        scorePl2Bb = PlayerPrefs.GetInt("PuntosP2", 0);
+
+        // Mostrar las puntuaciones iniciales en la interfaz de usuario
+        scoreTextPlBb1.text = scorePl1Bb.ToString();
+        scoreTextPlBb2.text = scorePl2Bb.ToString();
     }
 
     void Update()
     {
-
-        if(hasAnyPlayerWon)
+        if (hasAnyPlayerWon)
             return;
-
 
         if (pl1Bb.localScale.magnitude <= 0)
         {
             scorePl1Bb += 1;
             scoreTextPlBb1.text = scorePl1Bb.ToString();
+            PlayerPrefs.SetInt("PuntosP1", scorePl1Bb);
             hasAnyPlayerWon = true;
         }
 
@@ -45,10 +50,8 @@ public class ScoreManager : MonoBehaviour
         {
             scorePl2Bb += 1;
             scoreTextPlBb2.text = scorePl2Bb.ToString();
+            PlayerPrefs.SetInt("PuntosP2", scorePl2Bb);
             hasAnyPlayerWon = true;
         }
-
-
-
     }
 }
